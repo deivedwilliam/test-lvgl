@@ -1,0 +1,7 @@
+<project>
+    <targets>
+        <target name="online_showcase">
+            <display width="1280" height="720" color_format="XRGB8888"/>
+        </target>
+    </targets>
+</project>

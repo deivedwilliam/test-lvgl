@@ -1,0 +1,70 @@
+<globals>
+    <subjects>
+        <string name="operation_title" value="Centro de operacoes"/>
+        <string name="operation_result" value="Use os atalhos para inspecionar media, desvio-padrao, diferenca e o fluxo de PDF."/>
+        <string name="report_status" value="Status: pronto para gerar PDF"/>
+        <string name="report_action" value="No viewer online a exportacao fica simulada. No firmware real, conecte uma callback para produzir o PDF."/>
+    </subjects>
+
+    <styles>
+        <style name="panel_card"
+               bg_color="0x0d1825" bg_opa="100%"
+               radius="24"
+               border_width="1" border_color="0x203447"
+               shadow_width="18" shadow_color="0x000000" shadow_opa="14%"
+               pad_all="18"/>
+
+        <style name="section_card"
+               bg_color="0x101d2c" bg_opa="100%"
+               radius="24"
+               border_width="1" border_color="0x203447"
+               shadow_width="12" shadow_color="0x000000" shadow_opa="10%"
+               pad_all="18"/>
+
+        <style name="pill"
+               bg_color="0x112133" bg_opa="100%"
+               radius="999"
+               border_width="1" border_color="0x253a4f"
+               pad_left="12" pad_right="12"
+               pad_top="7" pad_bottom="7"/>
+
+        <style name="pill_soft"
+               bg_color="0x0d1723" bg_opa="100%"
+               radius="999"
+               border_width="1" border_color="0x1c3144"
+               pad_left="12" pad_right="12"
+               pad_top="7" pad_bottom="7"/>
+
+        <style name="action_primary"
+               bg_color="0x34d6df" bg_opa="100%"
+               radius="18"
+               border_width="0"
+               shadow_width="16" shadow_color="0x34d6df" shadow_opa="22%"
+               pad_left="18" pad_right="18"
+               pad_top="14" pad_bottom="14"/>
+
+        <style name="action_primary_pressed"
+               bg_color="0x4ae4eb"
+               shadow_width="8" shadow_opa="14%"/>
+
+        <style name="action_secondary"
+               bg_color="0x0d1723" bg_opa="100%"
+               radius="18"
+               border_width="1" border_color="0x23384c"
+               shadow_width="8" shadow_color="0x000000" shadow_opa="12%"
+               pad_left="18" pad_right="18"
+               pad_top="14" pad_bottom="14"/>
+
+        <style name="action_secondary_pressed"
+               bg_color="0x162638"
+               shadow_width="4" shadow_opa="8%"/>
+
+        <style name="title_text" text_color="0xf5fbff"/>
+        <style name="muted_text" text_color="0x7188a0"/>
+        <style name="accent_text" text_color="0x7de3ee"/>
+
+        <style name="divider"
+               bg_color="0x1c3044" bg_opa="100%"
+               radius="999"/>
+    </styles>
+</globals>

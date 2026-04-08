@@ -1,0 +1,201 @@
+<screen>
+    <styles>
+        <style name="report_panel"
+               bg_color="0x0d1825" bg_opa="100%"
+               radius="28"
+               border_width="1" border_color="0x203447"
+               shadow_width="20" shadow_color="0x000000" shadow_opa="18%"
+               pad_all="18"/>
+
+        <style name="row_box"
+               bg_color="0x101d2c" bg_opa="100%"
+               radius="18"
+               border_width="1" border_color="0x22384d"
+               pad_left="14" pad_right="14"
+               pad_top="10" pad_bottom="10"/>
+    </styles>
+
+    <animations>
+        <timeline name="export_flash">
+            <animation prop="translate_y" target="pdf_card" start="0" end="-6" duration="180"/>
+            <animation prop="translate_y" target="pdf_card" start="-6" end="0" duration="240" delay="180"/>
+            <animation prop="shadow_width" target="pdf_card" start="20" end="30" duration="240"/>
+            <animation prop="shadow_width" target="pdf_card" start="30" end="20" duration="260" delay="240"/>
+        </timeline>
+    </animations>
+
+    <view width="100%" height="100%"
+          flex_flow="column"
+          style_bg_color="0x06111c" style_bg_opa="100%"
+          style_pad_all="24" style_pad_row="20">
+        <lv_obj width="100%" height="80"
+                flex_flow="row"
+                style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                style_flex_main_place="space_between">
+            <lv_obj width="content" height="100%"
+                    flex_flow="row"
+                    style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                    style_pad_column="14">
+                <lv_button width="132" height="48">
+                    <style name="action_secondary"/>
+                    <style name="action_secondary_pressed" selector="pressed"/>
+                    <screen_create_event screen="dashboard" trigger="clicked" anim_type="move_right"/>
+                    <lv_label text="Voltar" style_text_color="0xf5fbff"/>
+                </lv_button>
+
+                <lv_obj width="content" height="100%"
+                        flex_flow="column"
+                        style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                        style_flex_main_place="space_between">
+                    <lv_label text="Preview do relatorio PDF" style_text_color="0xffffff"/>
+                    <lv_label text="Documento pronto para apresentar no viewer e depois conectar ao gerador real no firmware."
+                              width="620" long_mode="wrap">
+                        <style name="muted_text"/>
+                    </lv_label>
+                </lv_obj>
+            </lv_obj>
+
+            <lv_obj width="content" height="content">
+                <style name="pill_soft"/>
+                <lv_label text="Lote demonstrativo / 8 sensores">
+                    <style name="accent_text"/>
+                </lv_label>
+            </lv_obj>
+        </lv_obj>
+
+        <lv_obj width="100%" height="100%"
+                flex_flow="row"
+                style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                style_pad_column="20">
+            <lv_obj width="852" height="100%"
+                    flex_flow="column"
+                    style_pad_row="14">
+                <style name="report_panel"/>
+
+                <lv_label text="Resumo tecnico" style_text_color="0xffffff"/>
+                <lv_label text="Media 25.28 C | Desvio-padrao 3.03 C | Diferenca fixa S02-S07 +5.1 C"
+                          width="100%" long_mode="wrap">
+                    <style name="muted_text"/>
+                </lv_label>
+
+                <lv_obj width="100%" height="content"
+                        flex_flow="row"
+                        style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                        style_pad_column="10">
+                    <lv_obj width="content" height="content">
+                        <style name="pill"/>
+                        <lv_label text="Media: 25.28 C" style_text_color="0xffffff"/>
+                    </lv_obj>
+                    <lv_obj width="content" height="content">
+                        <style name="pill"/>
+                        <lv_label text="Desvio: 3.03 C" style_text_color="0xffffff"/>
+                    </lv_obj>
+                    <lv_obj width="content" height="content">
+                        <style name="pill"/>
+                        <lv_label text="PDF: pronto para callback" style_text_color="0xffffff"/>
+                    </lv_obj>
+                </lv_obj>
+
+                <lv_obj width="100%" height="1">
+                    <style name="divider"/>
+                </lv_obj>
+
+                <lv_obj width="100%" height="content"
+                        flex_flow="column"
+                        style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                        style_pad_row="8">
+                    <lv_obj width="100%" height="40" flex_flow="row" style_flex_main_place="space_between">
+                        <style name="row_box"/>
+                        <lv_label text="Sensor 01 / Linha A / Misturador" style_text_color="0xf5fbff"/>
+                        <lv_label text="22.4 C / +0.4 C" style_text_color="0x34d6df"/>
+                    </lv_obj>
+                    <lv_obj width="100%" height="40" flex_flow="row" style_flex_main_place="space_between">
+                        <style name="row_box"/>
+                        <lv_label text="Sensor 02 / Linha A / Entrada" style_text_color="0xf5fbff"/>
+                        <lv_label text="24.8 C / +0.8 C" style_text_color="0x49b8ff"/>
+                    </lv_obj>
+                    <lv_obj width="100%" height="40" flex_flow="row" style_flex_main_place="space_between">
+                        <style name="row_box"/>
+                        <lv_label text="Sensor 03 / Linha B / Reator" style_text_color="0xf5fbff"/>
+                        <lv_label text="25.1 C / +0.2 C" style_text_color="0x8dff95"/>
+                    </lv_obj>
+                    <lv_obj width="100%" height="40" flex_flow="row" style_flex_main_place="space_between">
+                        <style name="row_box"/>
+                        <lv_label text="Sensor 04 / Linha B / Camara" style_text_color="0xf5fbff"/>
+                        <lv_label text="26.7 C / +0.7 C" style_text_color="0xffb454"/>
+                    </lv_obj>
+                    <lv_obj width="100%" height="40" flex_flow="row" style_flex_main_place="space_between">
+                        <style name="row_box"/>
+                        <lv_label text="Sensor 05 / Linha C / Tanque" style_text_color="0xf5fbff"/>
+                        <lv_label text="28.0 C / +1.1 C" style_text_color="0xffd166"/>
+                    </lv_obj>
+                    <lv_obj width="100%" height="40" flex_flow="row" style_flex_main_place="space_between">
+                        <style name="row_box"/>
+                        <lv_label text="Sensor 06 / Linha C / Saida" style_text_color="0xf5fbff"/>
+                        <lv_label text="30.2 C / +1.6 C" style_text_color="0xff7a59"/>
+                    </lv_obj>
+                    <lv_obj width="100%" height="40" flex_flow="row" style_flex_main_place="space_between">
+                        <style name="row_box"/>
+                        <lv_label text="Sensor 07 / Linha D / Resfriador" style_text_color="0xf5fbff"/>
+                        <lv_label text="19.7 C / -0.9 C" style_text_color="0x9ae1ff"/>
+                    </lv_obj>
+                    <lv_obj width="100%" height="40" flex_flow="row" style_flex_main_place="space_between">
+                        <style name="row_box"/>
+                        <lv_label text="Sensor 08 / Linha D / Reserva" style_text_color="0xf5fbff"/>
+                        <lv_label text="25.3 C / +0.3 C" style_text_color="0xc792ff"/>
+                    </lv_obj>
+                </lv_obj>
+
+                <lv_label text="Observacao: no viewer online esta tela serve como preview visual do documento. A exportacao real do PDF deve ser feita por callback nativa no firmware ou no backend."
+                          width="100%" long_mode="wrap">
+                    <style name="muted_text"/>
+                </lv_label>
+            </lv_obj>
+
+            <lv_obj name="pdf_card" width="360" height="100%"
+                    flex_flow="column"
+                    style_pad_row="14">
+                <style name="report_panel"/>
+
+                <lv_label text="Exportacao PDF" style_text_color="0xffffff"/>
+                <lv_label bind_text="report_status" width="100%" long_mode="wrap">
+                    <style name="accent_text"/>
+                </lv_label>
+                <lv_label bind_text="report_action" width="100%" long_mode="wrap">
+                    <style name="muted_text"/>
+                </lv_label>
+
+                <lv_button width="100%" height="56">
+                    <style name="action_primary"/>
+                    <style name="action_primary_pressed" selector="pressed"/>
+                    <play_timeline_event trigger="clicked" target="self" timeline="export_flash"/>
+                    <subject_set_string_event trigger="clicked" subject="report_status" value="Status: exportacao PDF simulada"/>
+                    <subject_set_string_event trigger="clicked" subject="report_action" value="Agora basta trocar este botao por uma callback real que gere, assine e salve o PDF no dispositivo ou servidor."/>
+                    <lv_label text="Simular exportacao" style_text_color="0x04141a"/>
+                </lv_button>
+
+                <lv_obj width="100%" height="content"
+                        flex_flow="column"
+                        style_pad_row="10">
+                    <style name="section_card"/>
+                    <lv_label text="Checklist" style_text_color="0xffffff"/>
+                    <lv_label text="1. Amostras termicas listadas" style_text_color="0xf5fbff"/>
+                    <lv_label text="2. Media e desvio-padrao destacados" style_text_color="0xf5fbff"/>
+                    <lv_label text="3. Diferenca de referencia exibida" style_text_color="0xf5fbff"/>
+                    <lv_label text="4. Botao pronto para callback PDF" style_text_color="0xf5fbff"/>
+                </lv_obj>
+
+                <lv_obj width="100%" height="content"
+                        flex_flow="column"
+                        style_pad_row="8">
+                    <style name="section_card"/>
+                    <lv_label text="Proximo passo" style_text_color="0xffffff"/>
+                    <lv_label text="Se voce quiser, eu conecto esta UI a callbacks em C para calcular os valores dinamicamente e chamar um gerador real de PDF."
+                              width="100%" long_mode="wrap">
+                        <style name="muted_text"/>
+                    </lv_label>
+                </lv_obj>
+            </lv_obj>
+        </lv_obj>
+    </view>
+</screen>

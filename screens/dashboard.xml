@@ -1,0 +1,219 @@
+<screen>
+    <styles>
+        <style name="hero_panel"
+               bg_color="0x0f2031" bg_opa="100%"
+               radius="28"
+               border_width="1" border_color="0x243a50"
+               shadow_width="24" shadow_color="0x000000" shadow_opa="18%"
+               pad_all="22"/>
+
+        <style name="sidebar_panel"
+               bg_color="0x0c1622" bg_opa="100%"
+               radius="28"
+               border_width="1" border_color="0x1f3246"
+               shadow_width="20" shadow_color="0x000000" shadow_opa="18%"
+               pad_all="18"/>
+    </styles>
+
+    <animations>
+        <timeline name="refresh">
+            <animation prop="translate_y" target="hero" start="0" end="-6" duration="180"/>
+            <animation prop="translate_y" target="hero" start="-6" end="0" duration="240" delay="180"/>
+            <animation prop="shadow_width" target="hero" start="24" end="34" duration="220"/>
+            <animation prop="shadow_width" target="hero" start="34" end="24" duration="260" delay="220"/>
+            <animation prop="translate_y" target="result_panel" start="0" end="-4" duration="160"/>
+            <animation prop="translate_y" target="result_panel" start="-4" end="0" duration="220" delay="160"/>
+        </timeline>
+    </animations>
+
+    <view width="100%" height="100%"
+          flex_flow="column"
+          style_bg_color="0x06111c" style_bg_opa="100%"
+          style_pad_all="24" style_pad_row="20">
+        <lv_obj name="hero" width="100%" height="156"
+                flex_flow="row"
+                style_flex_main_place="space_between"
+                style_pad_column="24">
+            <style name="hero_panel"/>
+
+            <lv_obj width="content" height="100%"
+                    flex_flow="column"
+                    style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                    style_flex_main_place="space_between" style_pad_row="12">
+                <lv_obj width="content" height="content"
+                        flex_flow="row"
+                        style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                        style_pad_column="10">
+                    <lv_obj width="content" height="content">
+                        <style name="pill"/>
+                        <lv_label text="8 sensores online" style_text_color="0xf5fbff"/>
+                    </lv_obj>
+                    <lv_obj width="content" height="content">
+                        <style name="pill_soft"/>
+                        <lv_label text="animacao pronta para demo">
+                            <style name="accent_text"/>
+                        </lv_label>
+                    </lv_obj>
+                </lv_obj>
+
+                <lv_obj width="content" height="content"
+                        flex_flow="column"
+                        style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                        style_pad_row="6">
+                    <lv_label text="Thermo Board / LVGL XML" style_text_color="0xffffff" style_text_letter_space="1"/>
+                    <lv_label text="Painel elegante para leitura termica, analises rapidas e simulacao do fluxo de relatorio PDF."
+                              width="700" long_mode="wrap">
+                        <style name="muted_text"/>
+                    </lv_label>
+                </lv_obj>
+            </lv_obj>
+
+            <lv_obj width="210" height="100%"
+                    flex_flow="column"
+                    style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                    style_flex_main_place="space_between" style_flex_cross_place="end">
+                <lv_obj width="content" height="content">
+                    <style name="pill_soft"/>
+                    <lv_label text="Atualizacao simulada a cada 2 s">
+                        <style name="muted_text"/>
+                    </lv_label>
+                </lv_obj>
+
+                <lv_button width="190" height="54">
+                    <style name="action_primary"/>
+                    <style name="action_primary_pressed" selector="pressed"/>
+                    <play_timeline_event trigger="clicked" target="self" timeline="refresh"/>
+                    <subject_set_string_event trigger="clicked" subject="operation_title" value="Atualizacao visual"/>
+                    <subject_set_string_event trigger="clicked" subject="operation_result" value="A timeline refrescou o dashboard e destacou o centro de operacoes para a apresentacao."/>
+                    <lv_label text="Atualizar painel" style_text_color="0x04141a"/>
+                </lv_button>
+            </lv_obj>
+        </lv_obj>
+
+        <lv_obj width="100%" height="100%"
+                flex_flow="row"
+                style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                style_pad_column="20">
+            <lv_obj width="872" height="100%"
+                    flex_flow="column"
+                    style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                    style_pad_row="16">
+                <lv_obj width="100%" height="content"
+                        flex_flow="row"
+                        style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                        style_pad_column="16">
+                    <metric_card label="Media" value="25.28 C" note="Base atual com 8 sensores" accent="0x34d6df"/>
+                    <metric_card label="Desvio-padrao" value="3.03 C" note="Boa dispersao para demo" accent="0xffb454"/>
+                    <metric_card label="Pico maximo" value="30.2 C" note="Sensor 06 em alta" accent="0xff7a59"/>
+                    <metric_card label="Delta S02-S07" value="+5.1 C" note="Comparacao fixa de referencia" accent="0x8dff95"/>
+                </lv_obj>
+
+                <lv_obj width="100%" height="content"
+                        flex_flow="row_wrap"
+                        style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                        style_pad_row="16" style_pad_column="16">
+                    <sensor_card title="Sensor 01" zone="Linha A / Misturador" temperature="22.4 C" delta="+0.4 C" status="Estavel" progress="45" accent="0x34d6df"/>
+                    <sensor_card title="Sensor 02" zone="Linha A / Entrada" temperature="24.8 C" delta="+0.8 C" status="Ativo" progress="50" accent="0x49b8ff"/>
+                    <sensor_card title="Sensor 03" zone="Linha B / Reator" temperature="25.1 C" delta="+0.2 C" status="Estavel" progress="51" accent="0x8dff95"/>
+                    <sensor_card title="Sensor 04" zone="Linha B / Camara" temperature="26.7 C" delta="+0.7 C" status="Atencao" progress="56" accent="0xffb454"/>
+                    <sensor_card title="Sensor 05" zone="Linha C / Tanque" temperature="28.0 C" delta="+1.1 C" status="Atencao" progress="60" accent="0xffd166"/>
+                    <sensor_card title="Sensor 06" zone="Linha C / Saida" temperature="30.2 C" delta="+1.6 C" status="Alto" progress="67" accent="0xff7a59"/>
+                    <sensor_card title="Sensor 07" zone="Linha D / Resfriador" temperature="19.7 C" delta="-0.9 C" status="Baixo" progress="39" accent="0x9ae1ff"/>
+                    <sensor_card title="Sensor 08" zone="Linha D / Reserva" temperature="25.3 C" delta="+0.3 C" status="Estavel" progress="52" accent="0xc792ff"/>
+                </lv_obj>
+            </lv_obj>
+
+            <lv_obj width="340" height="100%"
+                    flex_flow="column"
+                    style_pad_row="14">
+                <style name="sidebar_panel"/>
+
+                <lv_obj width="100%" height="content"
+                        flex_flow="column"
+                        style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                        style_pad_row="8">
+                    <lv_label text="Centro de operacoes" style_text_color="0xffffff"/>
+                    <lv_label text="Botoes 100% em XML para demonstrar media, desvio-padrao, diferenca e o fluxo de exportacao."
+                              width="100%" long_mode="wrap">
+                        <style name="muted_text"/>
+                    </lv_label>
+                </lv_obj>
+
+                <lv_obj width="100%" height="1">
+                    <style name="divider"/>
+                </lv_obj>
+
+                <lv_obj name="result_panel" width="100%" height="content"
+                        flex_flow="column"
+                        style_pad_row="8">
+                    <style name="section_card"/>
+                    <lv_label bind_text="operation_title" style_text_color="0xffffff"/>
+                    <lv_label bind_text="operation_result" width="100%" long_mode="wrap">
+                        <style name="muted_text"/>
+                    </lv_label>
+                </lv_obj>
+
+                <lv_obj width="100%" height="content"
+                        flex_flow="column"
+                        style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                        style_pad_row="10">
+                    <lv_button width="100%" height="52">
+                        <style name="action_secondary"/>
+                        <style name="action_secondary_pressed" selector="pressed"/>
+                        <subject_set_string_event trigger="clicked" subject="operation_title" value="Media do conjunto"/>
+                        <subject_set_string_event trigger="clicked" subject="operation_result" value="Temperatura media atual: 25.28 C. A leitura resume os 8 sensores ativos deste lote."/>
+                        <lv_label text="Calcular media" style_text_color="0xf5fbff"/>
+                    </lv_button>
+
+                    <lv_button width="100%" height="52">
+                        <style name="action_secondary"/>
+                        <style name="action_secondary_pressed" selector="pressed"/>
+                        <subject_set_string_event trigger="clicked" subject="operation_title" value="Desvio-padrao"/>
+                        <subject_set_string_event trigger="clicked" subject="operation_result" value="Desvio-padrao atual: 3.03 C. Ha variacao moderada entre a zona mais fria e a mais quente."/>
+                        <lv_label text="Desvio-padrao" style_text_color="0xf5fbff"/>
+                    </lv_button>
+
+                    <lv_button width="100%" height="52">
+                        <style name="action_secondary"/>
+                        <style name="action_secondary_pressed" selector="pressed"/>
+                        <subject_set_string_event trigger="clicked" subject="operation_title" value="Diferenca entre sensores"/>
+                        <subject_set_string_event trigger="clicked" subject="operation_result" value="Comparacao demonstrativa: Sensor 02 menos Sensor 07 = +5.1 C. Troque isso por callback real para selecao dinamica."/>
+                        <lv_label text="Diferenca S02 x S07" style_text_color="0xf5fbff"/>
+                    </lv_button>
+
+                    <lv_button width="100%" height="54">
+                        <style name="action_primary"/>
+                        <style name="action_primary_pressed" selector="pressed"/>
+                        <subject_set_string_event trigger="clicked" subject="report_status" value="Status: pacote PDF preparado"/>
+                        <subject_set_string_event trigger="clicked" subject="report_action" value="A tela de relatorio foi aberta. No firmware final, conecte este fluxo a uma callback para gerar o arquivo PDF."/>
+                        <screen_create_event screen="report" trigger="clicked" anim_type="move_left"/>
+                        <lv_label text="Gerar relatorio PDF" style_text_color="0x04141a"/>
+                    </lv_button>
+                </lv_obj>
+
+                <lv_obj width="100%" height="content"
+                        flex_flow="column"
+                        style_pad_row="8">
+                    <style name="section_card"/>
+                    <lv_label text="Selecao de referencia" style_text_color="0xffffff"/>
+                    <lv_obj width="100%" height="content"
+                            flex_flow="row"
+                            style_bg_opa="0%" style_border_width="0" style_pad_all="0"
+                            style_pad_column="8">
+                        <lv_obj width="content" height="content">
+                            <style name="pill"/>
+                            <lv_label text="A = Sensor 02" style_text_color="0xffffff"/>
+                        </lv_obj>
+                        <lv_obj width="content" height="content">
+                            <style name="pill"/>
+                            <lv_label text="B = Sensor 07" style_text_color="0xffffff"/>
+                        </lv_obj>
+                    </lv_obj>
+                    <lv_label bind_text="report_status" width="100%" long_mode="wrap">
+                        <style name="muted_text"/>
+                    </lv_label>
+                </lv_obj>
+            </lv_obj>
+        </lv_obj>
+    </view>
+</screen>
